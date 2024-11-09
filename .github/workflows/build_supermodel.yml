@@ -26,7 +26,7 @@ jobs:
         make -f Makefiles/Makefile.UNIX -j$(nproc)
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Atualizamos aqui para a versão mais recente
       with:
         name: Supermodel-linux-build
         path: Supermodel  # Especifica o binário final, ajuste conforme o nome gerado.
