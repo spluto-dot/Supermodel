@@ -2059,7 +2059,7 @@ int main(int argc, char **argv)
   }
 
   // Flag as DPI-aware, otherwise the window content might be scaled by some graphics drivers
-  SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "system");
+  // SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "system");
 
   // Begin initializing various subsystems...
   int exitCode = 0;
