@@ -25,8 +25,13 @@ jobs:
       run: |
         make -f Makefiles/Makefile.UNIX -j$(nproc)
 
+    - name: Debug - List Files
+      run: |
+        echo "Listing all files in the repository after build:"
+        find . -type f
+
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: Supermodel-linux-build
-        path: bin/Supermodel  # Ajuste conforme o nome final do binário
+        path: bin/*  # Usamos coringa para capturar qualquer arquivo na pasta bin
