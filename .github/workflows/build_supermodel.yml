@@ -30,10 +30,18 @@ jobs:
       - name: Build Supermodel
         run: |
           make -f Makefiles/Makefile.UNIX clean
-          make -f Makefiles/Makefile.UNIX TARGET=Supermodel -j$(nproc)
+          make -f Makefiles/Makefile.UNIX TARGET=Supermodel -j$(nproc) || true
+          echo "🧪 Conteúdo da pasta bin/:"
+          find ./bin -type f -exec ls -lh {} \;
+          echo "🧪 Procurando qualquer coisa com 'supermodel' no nome:"
+          find . -type f -iname '*supermodel*'
 
-      - name: Upload Supermodel Binary
+      - name: Upload All Binaries (debug)
         uses: actions/upload-artifact@v4
         with:
-          name: supermodel-linux
-          path: bin/Supermodel
+          name: full-bin-dump
+          path: |
+            bin/
+            obj/
+            Src/
+            Makefiles/
