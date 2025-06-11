@@ -29,7 +29,8 @@ jobs:
 
       - name: Build Supermodel
         run: |
-          make -f Makefiles/Makefile.UNIX -j$(nproc)
+          make -f Makefiles/Makefile.UNIX clean
+          make -f Makefiles/Makefile.UNIX TARGET=Supermodel -j$(nproc)
           echo "Verificando se bin/Supermodel foi criado..."
           ls -lh bin/ || true
 
