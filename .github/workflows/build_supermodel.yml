@@ -1,10 +1,7 @@
 name: Build Supermodel
 
 on:
-  # Roda manualmente via botão no GitHub
   workflow_dispatch:
-
-  # Também roda automaticamente em qualquer push ou PR
   push:
     branches:
       - '**'
@@ -32,9 +29,10 @@ jobs:
       - name: Build Supermodel
         run: |
           make -f Makefiles/Makefile.UNIX -j$(nproc)
+          find . -type f -name "Supermodel*" -exec ls -lh {} \;
 
       - name: Upload Binary
         uses: actions/upload-artifact@v4
         with:
           name: supermodel-linux
-          path: bin/Supermodel
+          path: "**/Supermodel*"
