@@ -24,15 +24,18 @@ jobs:
             build-essential \
             libsdl2-dev \
             libsdl2-net-dev \
-            libglu1-mesa-dev
+            libglu1-mesa-dev \
+            libgl1-mesa-dev
 
       - name: Build Supermodel
         run: |
           make -f Makefiles/Makefile.UNIX -j$(nproc)
-          find . -type f -name "Supermodel*" -exec ls -lh {} \;
+          echo "Verificando se bin/Supermodel foi criado..."
+          ls -lh bin/ || true
 
       - name: Upload Binary
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: supermodel-linux
-          path: "**/Supermodel*"
+          path: bin/Supermodel
