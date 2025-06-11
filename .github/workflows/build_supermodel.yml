@@ -1,7 +1,7 @@
 name: Build Supermodel
 
 on:
-  # Roda build manual via botão no GitHub Actions
+  # Roda manualmente via botão no GitHub
   workflow_dispatch:
 
   # Também roda automaticamente em qualquer push ou PR
@@ -23,7 +23,11 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y build-essential libsdl2-dev libsdl2-net-dev
+          sudo apt install -y \
+            build-essential \
+            libsdl2-dev \
+            libsdl2-net-dev \
+            libglu1-mesa-dev
 
       - name: Build Supermodel
         run: |
